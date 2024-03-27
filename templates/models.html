@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{url_for('main')}}">
-            <img src="static/something/site_logo.png" alt="Logo" width="240" height="75">
+            <img src="https://i.im.ge/2024/03/27/WODX3r.site-logo.png" alt="Logo" width="240" height="75">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <a href="{{ url_for('add_model') }}">
-                <img src="static/logo/add_logo.png" alt="Logo" width="30" height="30">
+                <img src="https://i.im.ge/2024/03/27/WODeH6.add-logo.png" alt="Logo" width="30" height="30">
             </a>
         </div>
     </nav>
@@ -35,20 +35,13 @@
         <div class="row">
             <div class="col-md-10">
                 <img src="{{ model['photo1'] }}" alt="Photo 1">
-                <img src="{{ model['photo2'] }}" alt="Photo 2">
-                <img src="{{ model['photo3'] }}" alt="Photo 3">
-                <img src="{{ model['photo4'] }}" alt="Photo 4">
-                <img src="{{ model['photo5'] }}" alt="Photo 5">
-                <img src="{{ model['photo6'] }}" alt="Photo 6">
-                <img src="{{ model['photo7'] }}" alt="Photo 7">
             </div>
             <div class="col-md-3">
-                <!-- Інформація про кросівки -->
                 <h1>{{ model['name'] }}</h1>
                 <p><strong>Опис:</strong> {{ model['description'] }}</p>
                 <p><strong>Тип:</strong> {{ model['type'] }}</p>
                 <p><strong>Ціна:</strong> {{ model['price'] }}</p>
-                <a href="make_order" class="btn btn-primary">Замовити</a>
+                <a href="order" class="btn btn-primary">Замовити</a>
             </div>
         </div>
     </div>

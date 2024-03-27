@@ -44,9 +44,4 @@ def add_test_item(name,price,description,type,photo1,photo2,photo3,photo4,photo5
 
 
 add_test_item("Кросівки", 800, "Новинка кросівки", "Кросівки", 'https://i.im.ge/2024/03/24/WQljZf.img-8766-1.jpeg','','','','','','')
-add_test_item("Босоніжки", 400, "Новинка босоніжки", "Босоніжки", 'https://i.im.ge/2024/03/24/WQlPG0.b16b3ca8f3924c9143e6451af4f5a6b9867a588c-original.jpeg','','','','','','')
-add_test_item("Туфлі", 750, "Туфлі чоловічі", "Туфлі", 'https://i.im.ge/2024/03/24/WQlAAc.shoe1.jpeg','','','','','','')
-add_test_item("Лофери", 990, "Лофери жіночі", "Лофери", 'https://i.im.ge/2024/03/26/Wl3uUW.lofers1.jpeg','','','','','','')
-add_test_item("Сліпони", 490, "Новинка сліпони", "Сліпони", 'https://i.im.ge/2024/03/26/Wl37WJ.slipon1.jpeg','','','','','','')
-add_test_item("Шльопанці", 750, "Шльопанці чоловічі", "Шльопанці", 'https://i.im.ge/2024/03/26/Wl3wm8.22058-201.jpeg','','','','','','')
 print('SUCCESSFULLY ADDED')

@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{url_for('main')}}">
-            <img src="static/logo/house_logo.png" alt="Logo" width="30" height="30">
+            <img src="https://i.im.ge/2024/03/27/WODX3r.site-logo.png" alt="Logo" width="240" height="75">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,9 +20,40 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <a href="{{ url_for('add_model') }}">
-                <img src="static/logo/add_logo.png" alt="Logo" width="30" height="30">
+                <img src="https://i.im.ge/2024/03/27/WODeH6.add-logo.png" alt="Logo" width="30" height="30">
             </a>
         </div>
     </nav>
+
+    <div class="container mt-5">
+        <h2>Замовлення</h2>
+        <form action="/submit_order" method="post">
+            <div class="form-group">
+                <label for="first_name">Ім'я</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Фамілія</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Номер телефону</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="delivery">Вибір категорії доставки</label>
+                <select class="form-control" id="delivery" name="delivery" required>
+                    <option value="Нова Пошта">Нова Пошта</option>
+                    <option value="Укрпошта">Укрпошта</option>
+                    <option value="Meest">Meest</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="post_office">Відділення пошти</label>
+                <input type="text" class="form-control" id="post_office" name="post_office" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Замовити</button>
+        </form>
+    </div>
 </body>
 </html>

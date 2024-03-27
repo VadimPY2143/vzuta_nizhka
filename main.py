@@ -145,10 +145,10 @@ def get_models(model_id):
 
 
 
-@app.route('/models/<int:model_id>/make_order')
-def make_order(model_id):
+@app.route('/models/<int:model_id>/order')
+def order(model_id):
     model = get_models(model_id)
-    return render_template('make_order.html', model=model)
+    return render_template('order.html', model=model)
 
 
 
