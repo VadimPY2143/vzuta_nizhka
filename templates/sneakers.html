@@ -52,11 +52,11 @@
                 {% if shoes['type'][id] == 'Кросівки'%}
             <div class="col-4">
                 <div class="card mb-4">
-                        <img class="card-img-top embed-responsive-item" src= "{{ shoes['photo1'][id] }}" alt="">
+                        <img class="card-img-top embed-responsive-item" src= "{{ shoes['photo'][id] }}" alt="">
                     <div class="card-body">
 
                         <h2 class="h5 card-title">{{shoes['name'][id]}}</h2>
-                        <p class="card-text">{{shoes['descriptions'][id]}}</p>
+                        <p class="card-text">{{shoes['description'][id]}}</p>
                         <a href="{{ url_for('models', model_id=id) }}" class="btn btn-outline-secondary">Опис</a>
                     </div>
                 </div>

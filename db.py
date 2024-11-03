@@ -1,47 +1,61 @@
-import sqlite3
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary, insert
+from sqlalchemy.orm import Session
+
+engine = create_engine('sqlite+pysqlite:///database.db', echo=True)
+metadata = MetaData()
+
+
+order_table = Table(
+    'orders',
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column('name', String(50)),
+    Column('price', Integer),
+    Column('description', String(255)),
+    Column('type', String(50)),
+    Column('picture', LargeBinary, nullable=True),
+)
 
 
 
-try:
-    sqlite_connection = sqlite3.connect("vzuta.db")
-    sqlite_create_table_query = '''  CREATE TABLE IF NOT EXISTS shoes(
-                                    id INTEGER PRIMARY KEY,
-                                    name TEXT,
-                                    price INTEGER,
-                                    description TEXT,
-                                    type TEXT,
-                                    photo1 TEXT,
-                                    photo2 TEXT,
-                                    photo3 TEXT,
-                                    photo4 TEXT,
-                                    photo5 TEXT,
-                                    photo6 TEXT,
-                                    photo7 TEXT); '''
-    cursor = sqlite_connection.cursor()
-    cursor.execute(sqlite_create_table_query)
-    sqlite_connection.commit()
-    print('Table ORDERS Created')
-    cursor.close()
 
-except sqlite3.Error as error:
-    print('Error: ', error)
-
-finally:
-    if sqlite_connection:
-        sqlite_connection.commit()
-        print('DB disconnected')
+def add_test_data():
+    # Тестові дані для додавання
+    test_data = [
+        {
+            "name": "Shoe Model A",
+            "price": 100,
+            "description": "Comfortable running shoes",
+            "type": "Кросівки",
+            "picture": None  # Тут можна додати байтові дані зображення
+        },
+        {
+            "name": "Shoe Model B",
+            "price": 150,
+            "description": "Stylish sneakers",
+            "type": "Шльопанці",
+            "picture": None
+        },
+        {
+            "name": "Shoe Model C",
+            "price": 200,
+            "description": "High-quality hiking boots",
+            "type": "Лофери",
+            "picture": None
+        }
+    ]
 
 
-
-def add_test_item(name,price,description,type,photo1,photo2,photo3,photo4,photo5,photo6,photo7):
-    sqlite_connection = sqlite3.connect("vzuta.db")
-    cursor = sqlite_connection.cursor()
-    cursor.execute(
-        "INSERT INTO shoes (name,price,description,type,photo1,photo2,photo3,photo4,photo5,photo6,photo7) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-        (name,price,description,type,photo1,photo2,photo3,photo4,photo5,photo6,photo7))
-    sqlite_connection.commit()
-    sqlite_connection.close()
+    with Session(engine) as session:
+        for data in test_data:
+            stmt = insert(order_table).values(data)
+            session.execute(stmt)
 
 
-add_test_item("Кросівки", 800, "Новинка кросівки", "Кросівки", 'https://i.im.ge/2024/03/24/WQljZf.img-8766-1.jpeg','','','','','','')
-print('SUCCESSFULLY ADDED')
+        session.commit()
+
+
+
+add_test_data()
+
+metadata.create_all(engine)

@@ -7,104 +7,71 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         .form-group {
-            margin-bottom: 20px
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('main')}}">
-            <img src="static/logo/house_logo.png" alt="Logo" width="30" height="30">
+    <a class="navbar-brand" href="{{url_for('main')}}">
+        <img src="static/logo/house_logo.png" alt="Logo" width="30" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+        <a href="{{ url_for('add_model') }}">
+            <img src="static/logo/add_logo.png" alt="Logo" width="30" height="30">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            </ul>
-            <a href="{{ url_for('add_model') }}">
-                <img src="static/logo/add_logo.png" alt="Logo" width="30" height="30">
-            </a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h2>Додати нове взуття</h2>
-        <form method="post" enctype="multipart/form-data">
-
-            <div class="form-group">
-                <label for="name">Назва:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="description">Опис:</label>
-                <textarea id="description" name="description" rows="4" cols="50" class="form-control" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="price">Ціна:</label>
-                <input type="number" id="price" name="price" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="category">Категорія:</label>
-                <select id="category" name="category" class="form-control" required>
-                    <option value="Кросівки">Кросівки</option>
-                    <option value="Шльопанці">Шльопанці</option>
-                    <option value="Лофери">Лофери</option>
-                    <option value="Сліпони">Сліпони</option>
-                    <option value="Босоніжки">Босоніжки</option>
-                    <option value="Туфлі">Туфлі</option>
-                </select>
-            </div>
-
-            <h1>Конвертуйте фотографії <a href="https://im.ge/?gad_source=1&gclid=Cj0KCQjwwMqvBhCtARIsAIXsZpZztkXcSacSgI0G6rstAFiGdcCqJ5dlgvvtuktn1aaeHXJN1XAWbeMaAmf2EALw_wcB" target="_blank">тут</a></h1>
-            <div class="form-group">
-                <label for="photo1">Фото 1:</label>
-                <input type="text" id="photo1" name="photo1" accept="image/*" class="form-control-file" required>
-            </div>
-
-            <div class="form-group">
-                <label for="photo2">Фото 2:</label>
-                <input type="text" id="photo2" name="photo2" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <label for="photo3">Фото 3:</label>
-                <input type="text" id="photo3" name="photo3" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <label for="photo4">Фото 4:</label>
-                <input type="text" id="photo4" name="photo4" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <label for="photo5">Фото 5:</label>
-                <input type="text" id="photo5" name="photo5" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <label for="photo6">Фото 6:</label>
-                <input type="text" id="photo6" name="photo6" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <label for="photo7">Фото 7:</label>
-                <input type="text" id="photo7" name="photo7" accept="image/*" class="form-control-file">
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Додати взуття</button>
-            </div>
-        </form>
     </div>
+</nav>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="container">
+    <h2>Додати нове взуття</h2>
+    <form method="post" action="/add" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Назва:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Опис:</label>
+            <textarea id="description" name="description" rows="4" cols="50" class="form-control" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Ціна:</label>
+            <input type="number" id="price" name="price" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Категорія:</label>
+            <select id="category" name="category" class="form-control" required>
+                <option value="Кросівки">Кросівки</option>
+                <option value="Шльопанці">Шльопанці</option>
+                <option value="Лофери">Лофери</option>
+                <option value="Сліпони">Сліпони</option>
+                <option value="Босоніжки">Босоніжки</option>
+                <option value="Туфлі">Туфлі</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Фото</label>
+            <input type="file" id="photo" name="photo" accept="image/*" class="form-control-file" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Додати взуття</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
